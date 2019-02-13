@@ -75,7 +75,7 @@
                   @endif
                 </td>               
                 <td>{{$item->name}}<br>
-                  <a href="{{url('danh-sach-tin/'. $item->alias)}}" title="">{{url('danh-sach-tin'. $item->alias)}}</a>
+                  <a href="{{url('danh-sach-tin/'. $item->alias)}}" title="">{{url('danh-sach-tin/'. $item->alias)}}</a>
                </td>
                 <!-- <td class="text-center with_dieuhuong">
                   @if($item->status>0)

@@ -1,5 +1,6 @@
 <?php
     $setting = Cache::get('setting');
+    $recentlyPost = DB::table('news')->where('status',1)->where('com','bai-viet')->orderby('created_at','desc')->take(8)->get();
 ?>
 <div class="col-lg-4">
     <div class="widget-sidebar">
@@ -29,7 +30,7 @@
       <strong><strong>
       </strong></strong>
     </div>
-    <strong>
+   <!--  <strong>
       <strong>
          <div class="widget-sidebar">
             <h2 class="title-widget-sidebar">VIDEO</h2>
@@ -40,5 +41,5 @@
          </div>
         
       </strong>
-    </strong>
+    </strong> -->
 </div>

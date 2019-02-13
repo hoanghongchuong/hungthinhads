@@ -302,7 +302,7 @@ class IndexController extends Controller {
 		// dd($news_detail);
 		if(!empty($news_detail)){			
 				
-			$com='tin-tuc';
+			$com='news-detail';
 			$setting = Cache::get('setting');
 			// Cấu hình SEO
 			if(!empty($news_detail->title)){

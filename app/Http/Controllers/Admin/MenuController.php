@@ -44,13 +44,21 @@ class MenuController extends Controller {
         $parent = Menu::select('id','name','parent_id')->where('com' , $com)->get()->toArray();
     	return view('admin.menu.add', compact('parent','trang'));
     }
-    public function postAdd(MenuRequest $request)
+    public function postAdd(Request $request)
     {
         $com= $request->txtCom;
+        $img = $request->file('fImages');
+        $path_img='upload/hinhanh';
+        $img_name='';
+        if(!empty($img)){
+            $img_name=time().'_'.$img->getClientOriginalName();
+            $img->move($path_img,$img_name);
+        }
     	$cate = new Menu;
         $cate->parent_id = $request->txtmenu;
         $cate->name = $request->txtName;
         $cate->alias = $request->txtAlias;
+        $cate->photo = $img_name;
         $cate->keyword = $request->txtKeyword;
         $cate->description = $request->txtDescription;
         $cate->stt = $request->stt;
@@ -118,6 +126,17 @@ class MenuController extends Controller {
                 $news_cate->parent_id = $request->txtmenu;
             }else{
                 $news_cate->parent_id = 0;
+            }
+            $img = $request->file('fImages');
+            $img_current = 'upload/hinhanh/'.$request->img_current;
+            if(!empty($img)){
+                $path_img='upload/hinhanh';
+                $img_name=time().'_'.$img->getClientOriginalName();
+                $img->move($path_img,$img_name);
+                $news_cate->photo = $img_name;
+                if (File::exists($img_current)) {
+                    File::delete($img_current);
+                }
             }
             $news_cate->name = $request->txtName;
             $news_cate->alias = $request->txtAlias;

@@ -34,10 +34,16 @@
 	                  	<div class="tab-pane active" id="tab_1">
 	                  		<div class="row">
 		                  		<div class="col-md-6 col-xs-12">
+		                  			<div class="form-group col-md-12">
+										<label for="file">File ảnh</label>
+								     	<input type="file" id="file" name="fImages" >
+								    	<!-- <p class="help-block">Width:225px - Height: 162px</p> -->
+								    	
+									</div>
+
 			                    	<div class="form-group">
 								      	<label for="ten">Danh mục cha</label>
 								      	<select name="txtmenu" class="form-control">
-
 								      		<option value="0">Chọn danh mục</option>
 								      		<?php cate_news_parent($parent); ?>
 								      	</select>

@@ -4,36 +4,38 @@
     $setting = Cache::get('setting');
 ?>
 
-<div class="content-box content-box-page">
-    <nav aria-label="breadcrumb" class="nav-breadcrumb">
-        <div class="container">
-            <div class="row">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('')}}">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="{{url('tin-tuc')}}">Tin tức</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{$news_detail->name}}</li>
-                </ol>
-            </div>
+<style>
+     .gt_ngan_detail p{ font-weight: normal; }
+     .motangandm p{ font-weight: normal; }
+  </style>
+  <div class="container">
+     <div class="row">
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+           <!-- Title -->
+           <h1 class="mt-4 mt_l_h"> <a class="dk_duoi" href="">{{$news_detail->name}}</a></h1>
+           <!-- Author -->
+           <!-- Preview Image -->
+           <div class="content_detailx">
+               {!! $news_detail->content !!}
+           </div>
+           <hr>
+           <!-- Comments Form -->
+           <div class="comment-facebook">
+               <div class="fb-comments" data-href="{{URL::current()}}" data-width="100%" data-numposts="2"></div>
+           </div>
+           
         </div>
-    </nav>
-    <div class="box-detail-news">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9 col-xs-12">
-                    <h1 class="name_news_detail">{{$news_detail->name}}</h1>
-                    <div class="content_detail">
-                        {!! $news_detail->content !!}
-                    </div>
-                    <div class="comment-facebook">
-                        <div class="fb-comments" data-href="{{URL::Current()}}" data-width="100%" data-numposts="2"></div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
+        <!-- Sidebar Widgets Column -->
+        @include('templates.layout.sidebar')
+        <strong><strong>
+        </strong></strong>
+     </div>
+     <strong>
+        <strong>
+           <!-- /.row -->
+        </strong>
+     </strong>
+  </div>
 @endsection
 

@@ -45,12 +45,29 @@
     <link rel="stylesheet" href="{{ asset('public/css/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/main.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/reponsive.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/css/safza.css')}}">
+
+    <!-- <link rel="stylesheet" href="css/base.css"> hàm cần dùng điều kiện if( "http://".$_SERVER[“SERVER_NAME”].$_SERVER[“REQUEST_URI”] != http://”.$_SERVER[“SERVER_NAME”]."/index") {
+        
+        <link rel="stylesheet" href="css/bndth.css"> 
+        <link rel="stylesheet" href="css/vendor.css">
+        <link type="text/css" rel="stylesheet" href="css/magnific-popup.css" />
+        
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/main1.css"> 2 file tách này dành cho site thiet-ke-theo-yc.html
+        }
+         -->
+  
+    <!-- <link rel="stylesheet" href="{{ asset('public/css/base.css')}}"> -->
+    <!-- <link rel="stylesheet" href="{{ asset('public/css/main1.css')}}"> -->
+    <!-- trang thiet ket -->
     <link rel="stylesheet" href="{{ asset('public/css/main.css')}}">
+    @if(@$com !='news-detail')
     <link rel="stylesheet" href="{{ asset('public/css/bndth.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/safza.css')}}">
+    @endif
     @if(@$com !='index')
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main1.css">
+    <link rel="stylesheet" href="{{ asset('public/css/vendor.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('public/css/style1.css')}}" />
     @endif
     <script type="text/javascript">
         function baseUrl(){
@@ -58,6 +75,8 @@
         }
         window.token = '{{ csrf_token() }}';
    </script>
+   <script src="{{asset('public/js/jquery.min.js')}}"></script>
+   <script src="{{asset('public/js/jquery-1.10.2.min.js')}}"></script>
 </head>
 <body style="background:rgba(248,248,255,0.1) !important;">
     <div class="main-wrapper">
@@ -67,24 +86,24 @@
 
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10';
-            fjs.parentNode.insertBefore(js, fjs);
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=566938756984945&autoLogAppEvents=1';
+          fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
     </div>
     
     {!! $setting->codechat !!}
     {{ $setting->analytics }}
     @yield('script')
-    <script src="{{asset('public/js/jquery.min.js')}}"></script>
+    
     <script src="{{asset('public/js/owl.carousel.js')}}"></script>
     <script src="{{asset('public/js/add.js')}}"></script>
     <script src="{{asset('public/js/cus.js')}}"></script>
     @if(@$com !='index')
     <script src="{{asset('public/js/modernizr-2.6.2.min.js')}}"></script>
-    <script src="{{asset('public/js/jquery-1.10.2.min.js')}}"></script>
+    
     <script src="{{asset('public/js/jquery.lwtCountdown-1.0.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('public/js/owl.carousel.min.js')}}"></script>
@@ -95,7 +114,7 @@
     <script src="{{asset('public/js/plugins.js')}}"></script>
     <script src="{{asset('public/js/wow.min.js')}}"></script>
     <script src="{{asset('public/js/main.js')}}"></script>
-    <script src="{{asset('public/js/modernizr.js')}}"></script>
+    <!-- <script src="{{asset('public/js/modernizr.js')}}"></script> -->
     <script src="{{asset('public/js/pace.min.js')}}"></script>
     <script src="{{asset('public/js/plugins.js')}}"></script>
     <script src="{{asset('public/js/main.js')}}"></script>
