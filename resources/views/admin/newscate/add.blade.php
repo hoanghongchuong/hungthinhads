@@ -75,7 +75,7 @@
 								</div>
 								<div class="col-md-6 col-xs-12">
 									<div class="col-md-6 col-xs-12">
-										@if($_GET['type']=='dich-vu')
+										@if($_GET['type']=='bai-viet')
 										<div class="form-group col-md-12 @if ($errors->first('fImagesBg')!='') has-error @endif">
 											<label for="file">File background</label>
 									     	<input type="file" id="file" name="fImagesBg" >

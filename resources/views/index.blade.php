@@ -31,18 +31,27 @@
     <meta name="Area" content="HoChiMinh, Saigon, Hanoi, Danang, Vietnam" />    
     <link rel="shortcut icon" href="{!! asset('upload/hinhanh/'.$setting->favico) !!}" type="image/png" />
     
-    <link rel="stylesheet" type="text/css" href="{{asset('public/css/animate.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/css/owl.carousel.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/css/bootstrap.min.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/css/font-awesome.min.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/css/jquery.bxslider.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/css/jquery.fancybox.min.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/css/slick.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/css/style.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/css/cus.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('public/css/responsive.css')}}" />
-    <script src="{{asset('public/js/jquery-2.1.4.min.js')}}"></script>
-    
+    <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/reset.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/style.css')}}">
+   
+    <link rel="stylesheet" href="{{ asset('public/css/bootstrap3.7.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/hover.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/animate.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/reponsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/safza.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/bndth.css')}}">
+    @if(@$com !='index')
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main1.css">
+    @endif
     <script type="text/javascript">
         function baseUrl(){
             return '<?php echo url('/'); ?>';
@@ -50,22 +59,11 @@
         window.token = '{{ csrf_token() }}';
    </script>
 </head>
-<body>
+<body style="background:rgba(248,248,255,0.1) !important;">
     <div class="main-wrapper">
         @include('templates.layout.header')    
         @yield('content')
         @include('templates.layout.footer')
-
-
-        <!--google dich-->
-        <!--google dich-->
-        <script type="text/javascript">
-        function googleTranslateElementInit() {
-          new google.translate.TranslateElement({pageLanguage: 'vi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
-        </script>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
@@ -80,11 +78,27 @@
     {!! $setting->codechat !!}
     {{ $setting->analytics }}
     @yield('script')
+    <script src="{{asset('public/js/jquery.min.js')}}"></script>
+    <script src="{{asset('public/js/owl.carousel.js')}}"></script>
+    <script src="{{asset('public/js/add.js')}}"></script>
+    <script src="{{asset('public/js/cus.js')}}"></script>
+    @if(@$com !='index')
+    <script src="{{asset('public/js/modernizr-2.6.2.min.js')}}"></script>
+    <script src="{{asset('public/js/jquery-1.10.2.min.js')}}"></script>
+    <script src="{{asset('public/js/jquery.lwtCountdown-1.0.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('public/js/owl.carousel.min.js')}}"></script> 
-    <!-- <script src="mmenu/jquery.mmenu.all.min.js" defer ></script> -->
-    <script src="{{asset('public/js/slick.min.js')}}"></script>
-    <script src="{{asset('public/js/jquery.fancybox.min.js')}}"></script>
-    <script src="{{asset('public/js/script.js')}}"></script>
+    <script src="{{asset('public/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('public/js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('public/js/jquery.form.js')}}"></script>
+    <script src="{{asset('public/js/jquery.nav.js')}}"></script>
+    <script src="{{asset('public/js/jquery.sticky.js')}}"></script>
+    <script src="{{asset('public/js/plugins.js')}}"></script>
+    <script src="{{asset('public/js/wow.min.js')}}"></script>
+    <script src="{{asset('public/js/main.js')}}"></script>
+    <script src="{{asset('public/js/modernizr.js')}}"></script>
+    <script src="{{asset('public/js/pace.min.js')}}"></script>
+    <script src="{{asset('public/js/plugins.js')}}"></script>
+    <script src="{{asset('public/js/main.js')}}"></script>
+    @endif
 </body>
 </html>

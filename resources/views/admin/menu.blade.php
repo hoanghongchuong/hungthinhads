@@ -13,6 +13,14 @@
                 <li><a href="backend/product?type=san-pham"><i class="fa fa-circle-o"></i> <span>Danh sách</span></a></li>               
               </ul>
             </li> -->
+            <li class="treeview {{Request::segment(2) == 'menu' ? 'active' : ''}}">
+              <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Quản lý menu</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="backend/menu?type=menu-top"><i class="fa fa-circle-o"></i> <span>Menu top</span></a></li>                           
+              </ul>
+            </li>
             
             <!-- <li><a href="backend/orders"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li> -->
             <!-- <li><a href="backend/about/edit?type=gioi-thieu"><i class="fa fa-circle-o"></i> <span>Giới thiệu</span></a></li> -->

@@ -271,11 +271,11 @@ class IndexController extends Controller {
 	public function getListNews($id)
 	{
 		//Tìm article thông qua mã id tương ứng
-		$tintuc_cate = DB::table('news_categories')->select()->where('status',1)->where('com','tin-tuc')->where('alias',$id)->get()->first();
+		$tintuc_cate = DB::table('news_categories')->select()->where('status',1)->where('com','bai-viet')->where('alias',$id)->get()->first();
 		$cateNews = DB::table('news_categories')->where('com','tin-tuc')->get();
 		if(!empty($tintuc_cate)){
-			$tintuc = DB::table('news')->select()->where('status',1)->where('cate_id',$tintuc_cate->id)->orderBy('id','desc')->paginate(5);
-			$tintuc_moinhat_detail = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->orderby('created_at','desc')->take(6)->get();
+			$tintuc = DB::table('news')->select()->where('status',1)->where('cate_id',$tintuc_cate->id)->orderBy('id','desc')->paginate(10);
+			$recentlyPost = DB::table('news')->where('status',1)->where('com','bai-viet')->orderby('created_at','desc')->take(8)->get();
 			$hot_news = DB::table('news')->where('status',1)->where('com', 'tin-tuc')->where('noibat',1)->orderBy('stt','asc')->take(5)->get();
 			$setting = Cache::get('setting');
 
@@ -290,18 +290,18 @@ class IndexController extends Controller {
 			$img_share = asset('upload/news/'.$tintuc_cate->photo);
 
 			// End cấu hình SEO
-			return view('templates.news_list', compact('tintuc','tintuc_cate','banner_danhmuc','keyword','description','title','img_share','tintuc_moinhat_detail','hot_news', 'cateNews'));
+			return view('templates.news_list', compact('tintuc','tintuc_cate','banner_danhmuc','keyword','description','title','img_share','recentlyPost','hot_news', 'cateNews'));
 		}else{
 			return redirect()->route('getErrorNotFount');
 		}
 	}
 	
-	public function getNewsDetail($id)
+	public function getNewsDetail($alias)
 	{
-		$news_detail = DB::table('news')->select()->where('status',1)->where('com','tin-tuc')->where('alias',$id)->get()->first();
-		
+		$news_detail = DB::table('news')->select()->where('status',1)->where('com','bai-viet')->where('alias',$alias)->get()->first();
+		// dd($news_detail);
 		if(!empty($news_detail)){			
-			$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();			
+				
 			$com='tin-tuc';
 			$setting = Cache::get('setting');
 			// Cấu hình SEO

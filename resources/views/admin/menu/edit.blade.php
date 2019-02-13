@@ -50,7 +50,7 @@
 									</div>
 									<div class="form-group">
 								      	<label for="alias">Đường dẫn tĩnh</label>
-								      	<input type="text" name="txtAlias" id="txtAlias" value="{{ $data->alias }}"  class="form-control" />
+								      	<input type="text" name="txtAlias" id="" value="{{ $data->alias }}"  class="form-control" />
 									</div>
 									<p>Link mặc định có sẵn của các mục chính: <b>san-pham</b>, <b>gioi-thieu</b>, <b>tin-tuc</b>, <b>lien-he</b></p>
 									<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>

@@ -46,8 +46,8 @@
           <table id="example2" class="table table-bordered table-hover">
             <thead>
               <tr>
-                <th style="width: 20px;"><input type="checkbox" name="chonhet" class="minimal" id="chonhet" /></th>
-                <th class="text-center with_dieuhuong">Stt</th>
+                <th style=""><input type="checkbox" name="chonhet" class="minimal" id="chonhet" /></th>
+                <th class="">Stt</th>
                 
                 <th>Danh mục cha</th>             
                 
@@ -62,7 +62,7 @@
               @foreach($data as $k=>$item)
               <tr>
                 <td><input type="checkbox" name="chon" id="chon" value="{{$item->id}}" class="chon" /></td>
-                <td class="text-center with_dieuhuong">{{$k+1}}</td>
+                <td class="">{{$k+1}}</td>
                 
                 <td>
                   <?php  $parent = DB::table('news_categories')->where('id', $item->cate_id)->where('com', @$_GET['type'])->first();
@@ -74,8 +74,6 @@
                   @endif
                 </td>
                 <td><img src="{{ asset('upload/news/'.$item->photo) }}" onerror="this.src='{{ asset('public/admin_assets/images/no-image.jpg') }}';" class="img_product"  alt="NO PHOTO" /></td>
-                              
-              
                 <td>{{$item->name}} <br>
                   <a href="{{url('chi-tiet/'.$item->alias.'.html')}}" title="">{{url('chi-tiet/'.$item->alias.'.html')}}</a>
                 </td>

@@ -23,7 +23,7 @@ class MenuRequest extends Request {
 	public function rules()
 	{
 		return [
-			'txtName' => 'required|unique:news_categories,name',
+			'txtName' => 'required|unique:menu,name',
 		];
 	}
 	public function messages()

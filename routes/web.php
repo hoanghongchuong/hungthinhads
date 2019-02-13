@@ -68,11 +68,11 @@ Route::get('dich-vu',['as'=>'getDichvu', 'uses'=>'IndexController@getDichvu']);
 Route::post('card/check',['as'=>'checkCard', 'uses'=>'IndexController@checkCard']);
 
 Route::get('tin-tuc',['as'=>'getListNews', 'uses'=>'IndexController@getNews']);
-Route::get('tin-tuc/{alias}.html',['as'=>'getNewsDetail', 'uses'=>'IndexController@getNewsDetail']);
-Route::get('tin-tuc/{alias}',['as'=>'getListNews', 'uses'=>'IndexController@getListNews']);
+Route::get('chi-tiet/{alias}.html',['as'=>'getNewsDetail', 'uses'=>'IndexController@getNewsDetail']);
+Route::get('danh-sach-tin/{alias}',['as'=>'getListNews', 'uses'=>'IndexController@getListNews']);
 
 Route::get('{id}.html',['as'=>'getProductDetail', 'uses'=>'IndexController@getProductDetail']);
-Route::get('bai-viet/{id}.html',['as'=>'getBaiVietDetail', 'uses'=>'IndexController@getBaiVietDetail']);
+// Route::get('bai-viet/{id}.html',['as'=>'getBaiVietDetail', 'uses'=>'IndexController@getBaiVietDetail']);
 Route::get('error/404.html',['as'=>'getErrorNotFount', 'uses'=>'IndexController@getErrorNotFount']);
 Route::get('bao-gia','IndexController@baogia');
 
@@ -93,17 +93,6 @@ Route::group(['middleware' =>'authen', 'prefix' => 'backend'], function(){
 	Route::group(['prefix' => 'users'], function(){
 		Route::get('info',['as'=>'admin.users.getAdmin','uses'=>'Admin\UsersController@getAdmin']);
 		Route::post('updateinfo',['as'=>'admin.users.updateinfo','uses'=>'Admin\UsersController@updateinfo']);
-	});
-
-	// Chương trình khuyến mại, giảm giá
-	Route::group(['prefix' => 'campaign'], function(){
-		Route::get('/', ['as' => 'campaignIndex', 'uses' => 'Admin\CampaignController@index']);
-		Route::any('/create/{id?}', ['as' => 'campaignCreate', 'uses' => 'Admin\CampaignController@create']);
-		Route::get('/delete/{id}', ['as' => 'campaignDelete', 'uses' => 'Admin\CampaignController@delete']);
-	});
-	Route::group(['prefix' => 'campaign/card'], function(){
-		Route::get('/', ['as' => 'campaignCardIndex', 'uses' => 'Admin\CampaignController@getCard']);
-		Route::get('delete_list/{id}',['as'=>'deleteListCode','uses'=>'Admin\CampaignController@getDeleteList']);
 	});
 
 
@@ -338,7 +327,19 @@ Route::group(['middleware' =>'authen', 'prefix' => 'backend'], function(){
 		Route::get('delete/{id}',['as'=>'admin.slogan.delete', 'uses' => 'Admin\SloganController@delete']);
 	});
 	
-	
+	Route::group(['prefix' => 'menu'], function(){
+		Route::get('/',['as'=>'admin.menu.index','uses'=>'Admin\MenuController@getDanhSach']);
+		Route::get('add',['as'=>'admin.menu.getAdd','uses'=>'Admin\MenuController@getAdd']);
+		Route::post('postAdd',['as'=>'admin.menu.postAdd','uses'=>'Admin\MenuController@postAdd']);
+
+		Route::get('edit',['as'=>'admin.menu.getEdit','uses'=>'Admin\MenuController@getEdit']);
+
+		Route::post('edit',['as'=>'admin.menu.update','uses'=>'Admin\MenuController@update']);
+
+		Route::get('{id}/delete',['as'=>'admin.menu.getDelete','uses'=>'Admin\MenuController@getDelete']);
+		Route::get('{id}/delete_list',['as'=>'admin.menu.getDeleteList','uses'=>'Admin\MenuController@getDeleteList']);
+	});
+
 	Route::post('uploadImg', ['as'=>'admin.uploadImg' ,'uses'=>'Admin/UploadController@uploadImg']);
 	Route::post('dropzone/store', ['as'=>'dropzone.store','uses'=>'Admin/ProductController@dropzoneStore']);
 
