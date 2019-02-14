@@ -78,98 +78,6 @@ class IndexController extends Controller {
 		$img_share = asset('upload/hinhanh/'.$setting->photo);
 		return view('templates.index_tpl', compact('com','keyword','description','title','img_share','partners','products','categories_home','feedbacks','news','about'));
 	}
-	public function getProduct(Request $req)
-	{
-		$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('stt','asc')->get();
-		
-		$products = DB::table('products')->where('status',1)->where('com','san-pham')->paginate(18);
-		$com='san-pham';		
-		$title = "Sản phẩm mẫu";
-		$keyword = "Sản phẩm mẫu";
-		$description = "Sản phẩm mẫu";
-		// $img_share = asset('upload/hinhanh/'.$banner_danhmuc->photo);
-		
-		// return view('templates.product_tpl', compact('product','banner_danhmuc','doitac','camnhan_khachhang','keyword','description','title','img_share'));
-		
-		return view('templates.product_tpl', compact('title','keyword','description','products', 'com','cate_pro'));
-	}
-
-
-	public function getProductList($id, Request $req)
-	{		
-		
-		$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();
-        $com = 'san-pham';
-        $product_cate = ProductCate::select('*')->where('status', 1)->where('alias', $id)->where('com','san-pham')->first();        
-        if (!empty($product_cate)) {            
-        	$cate_parent = DB::table('product_categories')->where('id', $product_cate->parent_id)->first();
-
-        	$cateChilds = DB::table('product_categories')->where('parent_id', $product_cate->id)->get();
-        	
-        	$array_cate[] = $product_cate->id;
-        	if($cateChilds){
-        		foreach($cateChilds as $cate){
-        			$array_cate[] = $cate->id;
-        		}
-        	}        	
-        	
-
-        	$products = Products::whereIn('cate_id', $array_cate)->orderBy('id','desc')->paginate(18);
-            
-            if (!empty($product_cate->title)) {
-                $title = $product_cate->title;
-            } else {
-                $title = $product_cate->name;
-            }
-            $keyword = $product_cate->keyword;
-            $description = $product_cate->description;
-            $img_share = asset('upload/product/' . $product_cate->photo);
-            return view('templates.productlist_tpl', compact('products', 'product_cate', 'keyword', 'description', 'title', 'img_share', 'cate_pro', 'cate_parent', 'com'));
-        } else {
-            return redirect()->route('getErrorNotFount');
-        }
-	}
-
-	public function getProductListOld($id)
-	{
-		$cate_pro = DB::table('product_categories')->where('status',1)->where('parent_id',0)->orderby('id','asc')->get();
-        $com = 'san-pham';
-        $product_cate = ProductCate::select('*')->where('status', 1)->where('alias', $id)->where('com','san-pham')->first();        
-        if (!empty($product_cate)) {            
-        	$cate_parent = DB::table('product_categories')->where('id', $product_cate->parent_id)->first();
-
-        	$cateChilds = DB::table('product_categories')->where('parent_id', $product_cate->id)->get();
-        	
-        	$array_cate[] = $product_cate->id;
-        	if($cateChilds){
-        		foreach($cateChilds as $cate){
-        			$array_cate[] = $cate->id;
-        		}
-        	}        	
-        	
-
-        	$products = Products::whereIn('cate_id', $array_cate)->orderBy('id','desc')->paginate(18);
-            
-            if (!empty($product_cate->title)) {
-                $title = $product_cate->title;
-            } else {
-                $title = $product_cate->name;
-            }
-            $keyword = $product_cate->keyword;
-            $description = $product_cate->description;
-            $img_share = asset('upload/product/' . $product_cate->photo);
-            return view('templates.productlist_old', compact('products', 'product_cate', 'keyword', 'description', 'title', 'img_share', 'cate_pro', 'cate_parent', 'com'));
-        } else {
-            return redirect()->route('getErrorNotFount');
-        }
-	}
-
-	public function getProductChild($alias){
-		$cate = DB::table('product_categories')->where('alias',$alias)->first();
-		$products = DB::table('products')->select()->where('status',1)->where('cate_id',$cate->id)->orderBy('id','desc')->paginate(20);
-		$tintucs = DB::table('news')->orderBy('id','desc')->take(3)->get();
-		return view('templates.productlist_level2', compact('tintucs','products'));
-	}
 	
 
 
@@ -184,37 +92,13 @@ class IndexController extends Controller {
 			->withCookie($id_cookie);
 	}
 
-	public function getProductDetail($id, Request $req)
+	public function designWebsite()
 	{
-        
-        $cate_pro = DB::table('product_categories')->where('status',1)->orderby('id','asc')->get();
-		$product_detail = DB::table('products')->select()->where('status',1)->where('alias',$id)->get()->first();
-		if(!empty($product_detail)){
-			$banner_danhmuc = DB::table('lienket')->select()->where('status',1)->where('com','chuyen-muc')->where('link','san-pham')->get()->first();
-			// sản phẩm đã xem
-			$_SESSION['daxem'][$product_detail->id] = $product_detail->id;
-			$ids_session = $_SESSION['daxem'];
-			$productDaXem = DB::table('products')->whereIn('id', $ids_session)->where('status', 1)->get();
-
-			$album_hinh = DB::table('images')->select()->where('product_id',$product_detail->id)->orderby('id','asc')->get();		
-			$cateProduct = DB::table('product_categories')->select('name','alias')->where('id',$product_detail->cate_id)->first();
-			$productSameCate = DB::table('products')->select()->where('status',1)->where('id','<>',$product_detail->id)->where('cate_id',$product_detail->cate_id)->orderby('stt','desc')->take(20)->get();			
-			
-			// Cấu hình SEO
-			if(!empty($product_detail->title)){
-				$title = $product_detail->title;
-			}else{
-				$title = $product_detail->name;
-			}
-			$keyword = $product_detail->keyword;
-			$description = $product_detail->description;
-			$img_share = asset('upload/product/'.$product_detail->photo);
-			
-			// End cấu hình SEO
-			return view('templates.product_detail_tpl', compact('product_detail','banner_danhmuc','keyword','description','title','img_share','product_khac','album_hinh','cateProduct','productSameCate','tintucs','cate_pro','colors', 'productDaXem'));
-		}else{
-			return redirect()->route('getErrorNotFount');
-		}
+		$data = DB::table('slogan')->where('com', 'design-website')->get();
+		$sliders = DB::table('slider')->where('com','gioi-thieu')->where('status',1)->get();
+		// dd($sliders);
+		$com = 'design-website';
+		return view('templates.design_website', compact('data','com','sliders'));
 	}
 
 	public function getAbout()
@@ -229,12 +113,7 @@ class IndexController extends Controller {
 
 		return view('templates.about_tpl', compact('about','keyword','description','title','img_share','com'));
 	}
-	public function baogia()
-	{
-		$data = DB::table('about')->where('com','bao-gia')->first();
-		$title = 'Báo giá';	
-		return view('templates.baogia',compact('data','title'));
-	}
+	
 	public function search(Request $request)
 	{
 		$search = $request->txtSearch;

@@ -244,6 +244,7 @@ a:hover{
 	}
 #menu_rps .nav > li:hover .sub_menu{
 	display:block;
+	width: 100%;
 	}
 #menu_rps ul li .sub_menu .sub_col{
 	width:31.33333%;

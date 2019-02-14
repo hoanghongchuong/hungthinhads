@@ -3,74 +3,104 @@
 
 <?php
 $setting = Cache::get('setting');
-$sliders = DB::table('slider')->select()->where('status',1)->where('com','gioi-thieu')->orderBy('created_at','desc')->get();
+$slider = DB::table('slider')->select()->where('status',1)->where('com','gioi-thieu')->get();
 ?>
-<div class="content-home" style="background: url('{{asset('public/images/bg.jpg')}}'); background-size: cover;">
-    <div class="container">
+<div id="header_second">
+    <div class="container-fluid">
+        <!-- <img src="public/logo/logo.png" class="logo hvr-grow"> -->
         <div class="row">
-            <div class="about-home">
-                <div class="col-md-6">
-                    <h4 class="title-home">{{$about->name}}</h4>
-                    <div class="short-des">
-                        {!! $about->mota !!}
+            <div class="slider div50">
+                <div class="owl-carousel owl-theme slider_carosel">
+                    @foreach($slider as $key=>$item)
+                    <div class="item">
+                        <img src="{{asset('upload/hinhanh/'.$item->photo)}}" alt="">
                     </div>
+                    @endforeach                
                 </div>
-                <div class="col-md-6">
-                    <img src="{{asset('upload/hinhanh/'.$about->photo)}}" style="width: 100%;">
+                <div class="qconline">
+                    <p align="right">Chiến dịch quảng cáo online <br> đạt hiệu quả cao nhất</p>
+                    <form action="" method="post">
+                        {{csrf_field()}}
+                        <input class="qhemal" name="email" type="email" required="" placeholder="Nhập e-mail của bạn">
+                        <input type="submit" class="subemai" value="Nhận tư vấn miễn phí">
+                        
+                    </form>
                 </div>
             </div>
-            @foreach($categories_home as $k=>$cate)
-            <div class="box-category-product">
-            	@if($k%2 == 0)
-                <div class="col-md-6">
-                    <h4 class="title-home"><a href="{{url('san-pham/'.$cate->alias)}}" title="{{$cate->name}}">{{$cate->name}}</a></h4>
-                    <div class="short-des">
-                        {!! $cate->mota !!}
-                    </div>
+            <div class="slider mauxanh div50">
+                <div class="vongtron">
+                    <a href=""><img class="img_l1" src="{{asset('public/images/banner_cp.png')}}" class=""></a>
+                    
                 </div>
-                
-                <div class="col-md-6">
-                    <img src="{{asset('upload/product/'.$cate->photo)}}">
+                <div class="conten_vt">
+                    <p align="center" class="lap_tt">Cung cấp các giải pháp marketing online <br> hiện đại hiệu quả</p>
+                    <p align="center"><a class="timhieu" href="#">Tìm hiểu thêm</a></p>
                 </div>
-                @else
-                <div class="col-md-6">
-                    <img src="{{asset('upload/product/'.$cate->photo)}}">
-                </div>
-                <div class="col-md-6">
-                    <h4 class="title-home"><a href="{{url('san-pham/'.$cate->alias)}}" title="{{$cate->name}}">{{$cate->name}}</a></h4>
-                    <div class="short-des">
-                        {!! $cate->mota !!}
-                    </div>
-                </div>
-                
-                
-                @endif
             </div>
-			@endforeach
-            
-            
-
         </div>
     </div>
 </div>
-<div class="box-news-home">
-    <div class="container">
-        <div class="row">
-            <h3 class="title-news-home"><a href="" title="">Tin tức</a></h3>
-            @foreach($news as $item)
-            <div class="col-md-6 col-xs-12 box_item_news">
-                <div class="col-md-6">
-                    <a href="{{url('tin-tuc/'.$item->alias.'.html')}}" title="{{$item->name}}"><img src="{{asset('upload/news/'.$item->photo)}}"></a>
+
+<div id="wp_content">
+    <div id="list_service" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 list-title wow animated jackInTheBox" data-wow-duration="1s">
+                    <h2 class="title">Chiếm lĩnh thị trường marketing Online</h2>
+                    <p>Cung cấp giải pháp tối ưu</p>
                 </div>
-                <div class="col-md-6">
-                    <h4 class="name-news-home"><a href="{{url('tin-tuc/'.$item->alias.'.html')}}" title="{{$item->name}}">{{$item->name}}</a></h4>
-                    <div class="shot-des-news">
-                        {!! $item->mota !!}
+                <div class="col-md-4 col-sm-4 item-ser hvr-grow-shadow" data-wow-duration="1s">
+                    <div class="row">
+                        <div class="ser-img">
+                            <img src="http://safzagroup.com/public/fontend/safza/image/anh1.png" class="ser-thumb clearfix hvr-grow">
+                            <span class="hvr-grow"><img src="http://safzagroup.com/public/fontend/safza/image/web.png" class="ser-icon"><a href="http://safzagroup.com/chi-tiet-bai-viet3">Thiết kế website</a></span>
+                        </div>
                     </div>
-                    <p class="read-more"><a href="{{url('tin-tuc/'.$item->alias.'.html')}}">Xem thêm >></a></p>
+                    <div class="row">
+                        <div class="ser-detail">
+
+                            <P class="pd_l_ser">TỐI ƯU CODE CHUẨN SEO <br> Giao diện reposive mobile Lập trình ngôn ngữ thuần PHP, MYSQL Đáp ứng các yêu cầu thiết kế web khó nhất Với hơn 8 năm kinh nghiệm thiết kế web Cam kết với mức giá website tốt nhất</P>
+
+
+                            <a href="http://safzagroup.com/chi-tiet-bai-viet3" class="btn btn-default btn-more hvr-grow">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 item-ser hvr-grow-shadow" data-wow-duration="1s">
+                    <div class="row">
+                        <div class="ser-img">
+                            <img src="http://safzagroup.com/public/fontend/safza/image/anh2.png" class="ser-thumb clearfix hvr-grow">
+                            <span class="hvr-grow"><img src="http://safzagroup.com/public/fontend/safza/image/video.png" class="ser-icon"><a href="http://safzagroup.com/quang-cao.html">Quảng cáo trực tuyến</a></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="ser-detail">
+
+                            <p class="pd_l_ser">CÔNG TY CHÚNG TÔI CHUYÊN CUNG CẤP <br>Dịch vụ quảng cáo trực tuyến hiệu quả, với mục tiêu số 1 là đẩy mạnh bán hàng cho doanh nghiệp! Với phương châm đó, toàn thể đội ngũ quản lý/ nhân viên Safza Group luôn tâm niệm "hiệu
+                                quả của khách hàng chính là lợi nhuận cao nhất của chúng tôi."</p>
+                            <a href="http://safzagroup.com/quang-cao.html" class="btn btn-default btn-more hvr-grow">Xem thêm</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-4 item-ser hvr-grow-shadow" data-wow-duration="1s">
+                    <div class="row">
+                        <div class="ser-img">
+                            <img src="http://safzagroup.com/public/fontend/safza/image/anh3.png" class="ser-thumb clearfix hvr-grow">
+                            <span class="hvr-grow"><img src="http://safzagroup.com/public/fontend/safza/image/web2.png" class="ser-icon"><a href="http://safzagroup.com/bo-nhan-dien-thuong-hieu.html">Nhận diện thương hiệu</a></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="ser-detail">
+
+                            <p class="pd_l_ser">CUNG CẤP CÁC DỊCH VỤ <br>thiết kế nhận diện thương hiệu cho doanh nghiệp Cung cấp các giải pháp toàn diện về thiết kế nhận diện thương hiệu cho doanh nghiệp Cung cấp các bước chi tiết về thiết kế nhận diện thương hiệu cho
+                                doanh nghiệp
+                            </p>
+                            <a href="http://safzagroup.com/bo-nhan-dien-thuong-hieu.html" class="btn btn-default btn-more hvr-grow">Xem thêm</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            @endforeach
         </div>
     </div>
 </div>

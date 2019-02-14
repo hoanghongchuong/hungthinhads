@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/css/hover.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/css/ionicons.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{ asset('public/css/ionicons.min.css')}}"> -->
     <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/main.css')}}">
@@ -60,14 +60,13 @@
     <!-- <link rel="stylesheet" href="{{ asset('public/css/base.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{ asset('public/css/main1.css')}}"> -->
     <!-- trang thiet ket -->
-    <link rel="stylesheet" href="{{ asset('public/css/main.css')}}">
     @if(@$com !='news-detail')
     <link rel="stylesheet" href="{{ asset('public/css/bndth.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/safza.css')}}">
     @endif
     @if(@$com !='index')
     <link rel="stylesheet" href="{{ asset('public/css/vendor.css')}}">
-    <link type="text/css" rel="stylesheet" href="{{ asset('public/css/style1.css')}}" />
+    <!-- <link type="text/css" rel="stylesheet" href="{{ asset('public/css/style1.css')}}" /> -->
     @endif
     <script type="text/javascript">
         function baseUrl(){

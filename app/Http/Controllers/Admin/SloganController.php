@@ -9,7 +9,13 @@ use File;
 class SloganController extends Controller
 {
      public function index(){
-    	$data = Slogan::all();
+        // $com= $request->txtCom;
+        if(!empty($_GET['type'])){
+            $com=$_GET['type'];
+        }else{
+            $com='';
+        }
+    	$data = Slogan::where('com', $com)->get();
     	// dd($province);
     	return view('admin.slogan.index',compact('data'));
     }
@@ -18,6 +24,8 @@ class SloganController extends Controller
     	return view('admin.slogan.create', compact('data'));
     }
     public function postCreate(Request $request){
+        $com= $request->txtCom;
+        
         $img = $request->file('fImages');
         $path_img='upload/hinhanh';
         $img_name='';
@@ -39,17 +47,31 @@ class SloganController extends Controller
         $slogan->photo2 = $img_name2;
         $slogan->stt = intval($request->stt);
     	$slogan->content = $request->content;
+        $slogan->com = $request->txtCom;
+        $slogan->icon = $request->icon;
         // dd($slogan);
     	$slogan->save();
-    	return redirect(route('admin.slogan.index'))->with('mess','Thêm thành công');
+    	return redirect('backend/slogan?type='.$com)->with('mess','Thêm thành công');
     }
 
     public function getEdit($id){
+        // $com= $request->txtCom;
+        if(!empty($_GET['type'])){
+            $com=$_GET['type'];
+        }else{
+            $com='';
+        }
+
     	$slogan = Slogan::where('id',$id)->first();    	
         $stt = Slogan::select('stt')->orderBy('id','asc')->get()->toArray();
     	return view('admin.slogan.edit', compact('slogan','stt'));
     }
     public function postEdit(Request $request, $id){
+        if(!empty($_GET['type'])){
+            $com=$_GET['type'];
+        }else{
+            $com='';
+        }
     	$slogan = Slogan::where('id',$id)->first();
         $img = $request->file('fImages');
         $img_current = 'upload/hinhanh/'.$request->img_current;
@@ -78,13 +100,15 @@ class SloganController extends Controller
         $slogan->link = $request->link;
     	$slogan->content = $request->content;
         $slogan->stt = intval($request->stt);
+        $slogan->com = $request->txtCom;
+        $slogan->icon = $request->icon;
     	$slogan->save();
-    	return redirect(route('admin.slogan.index'));
+    	return redirect()->back()->with('mess','Thành công');
     }
 
     public function delete($id){
     	$data = Slogan::find($id);
     	$data->delete();
-    	return redirect(route('admin.slogan.index'))->with('mess','Xóa thành công');
+    	return redirect()->back()->with('mess','Xóa thành công');
     }
 }

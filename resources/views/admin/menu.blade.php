@@ -33,7 +33,17 @@
                 <li><a href="backend/newscate?type=bai-viet"><i class="fa fa-circle-o"></i> <span>Danh mục</span></a></li>
                 <li class="{{Request::segment(2) == 'news' ? 'active' : ''}}"><a href="backend/news?type=bai-viet"><i class="fa fa-circle-o"></i> <span>Danh sách</span></a></li>               
               </ul>
-            </li>            
+            </li> 
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Thiết kế website</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="backend/slogan?type=design-website"><i class="fa fa-circle-o"></i> <span>Tính năng nổi bật</span></a></li>
+                <li><a href="backend/slider?type=design-website"><i class="fa fa-circle-o"></i> <span>Slider</span></a></li>                           
+              </ul>
+            </li>           
             <li><a href="backend/partner"><i class="fa fa-circle-o"></i> <span>Quản lý đối tác</span></a></li>
             <!-- <li><a href="backend/feedback"><i class="fa fa-gear" aria-hidden="true"></i> <span>Ý kiến khách hàng</span></a></li> -->
             <li><a href="backend/contact"><i class="fa fa-envelope"></i> <span>Quản lý liên hệ</span></a></li>

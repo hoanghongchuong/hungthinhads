@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-@section('controller','Slogan')
+@section('controller','Post')
 @section('action','Add')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -23,7 +23,8 @@
           
           <form name="frmAdd" method="post" action="{{ route('admin.slogan.postCreate') }}" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-             <div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
+            <input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
+             <!-- <div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
                 <label for="file">File ảnh</label>
                   <input type="file" id="file" name="fImages" >
                   <p class="help-block">Width:225px - Height: 162px</p>
@@ -39,16 +40,22 @@
                   @if ($errors->first('fImages')!='')
                     <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('fImages'); !!}</label>
                     @endif
-              </div>             
+              </div>     -->         
             <div class="clearfix"></div>
             
-            <!-- <div class="col-md-6">
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="">Tên</label>
                 <input type="text" name="txtName" class="form-control" value="">
               </div>
               
-            </div> -->
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="">Icon</label>
+                <input type="text" name="icon" class="form-control" value="">
+              </div>              
+            </div>
             <!-- <div class="col-md-6">
               <div class="form-group">
                 <label for="">Link</label>
