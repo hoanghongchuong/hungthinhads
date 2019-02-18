@@ -121,7 +121,13 @@ class IndexController extends Controller {
 		$com = 'quang-cao';
 		return view('templates.quangcao', compact('title', 'description', 'com','news_cate'));
 	}
-
+	public function tenmien()
+	{
+		
+		$com = 'Tên miền';
+		$title = 'Tên miền';
+		return view('templates.tenmien', compact('title'));
+	}
 	public function getAbout()
 	{
 		$about = DB::table('about')->where('com','gioi-thieu')->first();		

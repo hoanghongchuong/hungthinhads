@@ -58,7 +58,7 @@ Route::get('logout','LoginController@logout');
 Route::get('thiet-ket-website', 'IndexController@designWebsite')->name("desgin.website");
 Route::get('chi-tiet-bai-viet/{alias}.html', 'IndexController@detail_design');
 Route::get('quang-cao','IndexController@quangcao');
-
+Route::get('ten-mien','IndexController@tenmien');
 
 
 Route::get('tin-tuc',['as'=>'getListNews', 'uses'=>'IndexController@getNews']);
