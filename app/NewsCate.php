@@ -10,4 +10,7 @@ class NewsCate extends Model {
 
 	public $timestamps = true;
 
+	public function cateChilds(){
+		return $this->hasMany('App\NewsCate','parent_id');
+	}
 }

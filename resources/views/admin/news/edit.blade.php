@@ -36,6 +36,7 @@
 	                  	<div class="tab-pane active" id="tab_1">
 	                  		<div class="row">
 		                  		<div class="col-md-6 col-xs-12">
+		                  			
 		                  			<div class="form-group @if ($errors->first('fImages')!='') has-error @endif">
 										<div class="form-group">
 											<img src="{{ asset('upload/news/'.$data->photo) }}" onerror="this.src='{{asset('public/admin_assets/images/no-image.jpg')}}'" width="200"  alt="NO PHOTO" />
@@ -49,7 +50,7 @@
 								      	@endif
 									</div>									
 									<div class="clearfix"></div>
-									
+									@if($_GET['type']!='thiet-ke')
 									<div class="form-group">
 								      	<label for="ten">Danh mục bài viết</label>
 								      	<select name="txtNewsCate" class="form-control">
@@ -58,6 +59,7 @@
 								      		<?php cate_parent($parent,0,"--",$data->cate_id) ?>
 								      	</select>
 									</div>
+									@endif
 							    	<div class="form-group @if ($errors->first('txtName')!='') has-error @endif">
 								      	<label for="ten">Tên</label>
 								      	<input type="text" name="txtName" id="txtName" value="{{ $data->name }}"  class="form-control" />
@@ -72,7 +74,7 @@
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
 									</div>
-									@if($_GET['type']!='gioi-thieu')
+									@if($_GET['type']!='thiet-ke')
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="txtDesc" rows="5" class="form-control">{{ $data->mota }}</textarea>

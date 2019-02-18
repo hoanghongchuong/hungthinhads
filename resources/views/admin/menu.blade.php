@@ -25,27 +25,39 @@
             
             <!-- <li><a href="backend/orders"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li> -->
             <!-- <li><a href="backend/about/edit?type=gioi-thieu"><i class="fa fa-circle-o"></i> <span>Giới thiệu</span></a></li> -->
-            <li class="treeview {{Request::segment(2) == 'newscate' || Request::segment(2) == 'news' ? 'active' : ''}}">
+            <li class="treeview {{Request::segment(2) == 'newscate' || @$_GET['type'] == 'bai-viet' ? 'active' : ''}}">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Bài viết</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="backend/newscate?type=bai-viet"><i class="fa fa-circle-o"></i> <span>Danh mục</span></a></li>
-                <li class="{{Request::segment(2) == 'news' ? 'active' : ''}}"><a href="backend/news?type=bai-viet"><i class="fa fa-circle-o"></i> <span>Danh sách</span></a></li>               
+                <li class="{{Request::segment(2) == 'news' && $_GET['type'] == 'bai-viet' ? 'active' : ''}}"><a href="backend/news?type=bai-viet"><i class="fa fa-circle-o"></i> <span>Danh sách</span></a></li>               
               </ul>
             </li> 
 
-            <li class="treeview">
+            <li class="treeview {{@$_GET['type'] == 'thiet-ke' ? 'active' : ''}}">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Thiết kế website</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="backend/slogan?type=design-website"><i class="fa fa-circle-o"></i> <span>Tính năng nổi bật</span></a></li>
-                <li><a href="backend/slider?type=design-website"><i class="fa fa-circle-o"></i> <span>Slider</span></a></li>                           
+                <li><a href="backend/slogan?type=package-design"><i class="fa fa-circle-o"></i> <span>Gói thiết kế website</span></a></li>
+                <li><a href="backend/slider?type=design-website"><i class="fa fa-circle-o"></i> <span>Slider</span></a></li>         
+                <li class=""><a href="backend/news?type=thiet-ke"><i class="fa fa-circle-o"></i> <span>Bài viết</span></a></li>                  
               </ul>
-            </li>           
+            </li>   
+
+            <li class="treeview {{@$_GET['type'] == 'thiet-ke' ? 'active' : ''}}">
+              <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Quảng cáo</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="backend/slogan?type=service-qc"><i class="fa fa-circle-o"></i> <span>Dịch vụ quảng cáo</span></a></li>
+                               
+              </ul>
+            </li>         
             <li><a href="backend/partner"><i class="fa fa-circle-o"></i> <span>Quản lý đối tác</span></a></li>
-            <!-- <li><a href="backend/feedback"><i class="fa fa-gear" aria-hidden="true"></i> <span>Ý kiến khách hàng</span></a></li> -->
+            <li><a href="backend/feedback"><i class="fa fa-gear" aria-hidden="true"></i> <span>Ý kiến khách hàng</span></a></li>
             <li><a href="backend/contact"><i class="fa fa-envelope"></i> <span>Quản lý liên hệ</span></a></li>
             <!-- <li><a href="backend/newsletter?type=newsletter"><i class="fa fa-circle-o"></i> <span>Đăng ký nhận tin</span></a></li> -->
             <!-- <li><a href="backend/chinhanh"><i class="fa fa-envelope"></i><span>Quản lý cửa hàng</span></a></li> -->

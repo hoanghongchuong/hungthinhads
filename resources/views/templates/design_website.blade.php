@@ -67,56 +67,13 @@
                   </div>
                </div>
                <div class="col-md-6 col-sm-12 wow fadeInLeft" data-wow-delay="0.3s" style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
-                  <div class="about-slider">
-                     <div class="init-slider owl-carousel owl-theme owl-loaded">
-                        <div class="owl-stage-outer">
-                           <div class="owl-stage" style="transform: translate3d(-1110px, 0px, 0px); transition: all 0s ease 0s; width: 6105px;">
-                              
-                             
-                              <div class="owl-item" style="width: 555px; margin-right: 0px;">
-                                 <div class="about-item">
-                                    <img height="265" class="img_2" src="http://safzagroup.com/public/backend/block/sYGCK-học-thiết-kế-đồ-họa_1.png" alt="">
-                                 </div>
-                              </div>
-                              <div class="owl-item" style="width: 555px; margin-right: 0px;">
-                                 <div class="about-item">
-                                    <img height="265" class="img_2" src="http://safzagroup.com/public/backend/block/6PV4m-reposiver-web-banner.jpg" alt="">
-                                 </div>
-                              </div>
-                              <div class="owl-item" style="width: 555px; margin-right: 0px;">
-                                 <div class="about-item">
-                                    <img height="265" class="img_2" src="http://safzagroup.com/public/backend/block/1ESiy-w1.jpg" alt="">
-                                 </div>
-                              </div>
-                              <div class="owl-item cloned" style="width: 555px; margin-right: 0px;">
-                                 <div class="about-item">
-                                    <img height="265" class="img_2" src="http://safzagroup.com/public/backend/block/gJlD9-quy-trinh-quang-cao-website-hoatech.jpg" alt="">
-                                 </div>
-                              </div>
-                              <div class="owl-item cloned" style="width: 555px; margin-right: 0px;">
-                                 <div class="about-item">
-                                    <img height="265" class="img_2" src="http://safzagroup.com/public/backend/block/68WhL-26_2_2014_13_24_09_jv0tp327fa1bhf9744c4r54f27_se3lz2n161.png" alt="">
-                                 </div>
-                              </div>
-                           </div>
+                    <div class="owl-carousel owl-carousel-fix owl-theme">
+                        @foreach($sliders as $item)
+                        <div class="item">
+                            <img src="{{asset('upload/hinhanh/'.$item->photo)}}" alt="" style="height: 400px;">
                         </div>
-                        <div class="owl-controls">
-                           <!-- <div class="owl-nav">
-                              <div class="owl-prev" style="display: none;">prev</div>
-                              <div class="owl-next" style="display: none;">next</div>
-                           </div> -->
-                           <div class="owl-dots" style="">
-                              <!-- <div class="owl-dot active"><span></span></div>
-                              <div class="owl-dot"><span></span></div>
-                              <div class="owl-dot"><span></span></div>
-                              <div class="owl-dot"><span></span></div>
-                              <div class="owl-dot"><span></span></div>
-                              <div class="owl-dot"><span></span></div>
-                              <div class="owl-dot"><span></span></div> -->
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                        @endforeach
+                    </div>
                </div>
             </div>
         </div>
@@ -126,61 +83,24 @@
             <div class="row">
                <div class="heading wow fadeInUp" style="visibility: hidden; animation-name: none;">
                   <h3 class="h3_title">CÁC GÓI THIẾT KẾ WEBSITE</h3>
-                  <p class="p_tkwebct">Safza cung cấp các gói thiết kế phong phú đa dạng</p>
+                  <p class="p_tkwebct">HungThinh cung cấp các gói thiết kế phong phú đa dạng</p>
                   <span class="sp_icon2"><i class="fa fa-diamond" aria-hidden="true"></i></span>
                </div>
-               <div class="col-sm-6 col-md-3 wow fadeInLeft" style="visibility: hidden; animation-name: none;">
+                @foreach($package_desgin as $package)
+                <div class="col-sm-6 col-md-3 wow fadeInLeft" style="visibility: hidden; animation-name: none;">
                   <div class="service">
                      <div class="icon-box">
                         <span class="icon">
-                        <i class="ion-android-desktop"></i>   
+                        <i class="{{$package->icon}}"></i>   
                         </span>
                      </div>
                      <div class="caption">
-                        <h3>Thiết kế website giá rẻ</h3>
-                        <p class="p_tkwebct">Chúng tôi cung cấp dịch vụ thiết kế website giá rẻ, giảm thiểu chi phí tối đa cho bạn nhưng giá trị mang lại vượt sự mong đợi</p>
+                        <h3>{{$package->name}}</h3>
+                        <p class="p_tkwebct">{!! $package->content !!}</p>
                      </div>
                   </div>
-               </div>
-               <div class="col-sm-6 col-md-3 wow fadeInLeft" style="visibility: hidden; animation-name: none;">
-                  <div class="service">
-                     <div class="icon-box">
-                        <span class="icon">
-                        <i class="ion-android-desktop"></i>   
-                        </span>
-                     </div>
-                     <div class="caption">
-                        <h3>Thiết kế website TMĐT</h3>
-                        <p class="p_tkwebct">Bạn là một doanh nghiệp kinh doanh dịch vụ hoặc đang kinh doanh một số sản phẩm, bạn muốn thiết kế một website theo ý tưởng mà bạn hình dung ra trong đầu..</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-3 wow fadeInLeft" data-wow-delay="0.3s" style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
-                  <div class="service">
-                     <div class="icon-box">
-                        <span class="icon">
-                        <i class="ion-speedometer"></i>   
-                        </span>
-                     </div>
-                     <div class="caption">
-                        <h3>Chăm sóc website</h3>
-                        <p class="p_tkwebct">Đa phần các doanh nghiệp khi xây dựng website không hoàn thiện nội dung của mình. Và tập trung vào quảng cáo hệ thống website, khi khách hàng truy cập vào website thì nội dung không tốt</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-6 col-md-3 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: hidden; animation-delay: 0.6s; animation-name: none;">
-                  <div class="service">
-                     <div class="icon-box">
-                        <span class="icon">
-                        <i class="ion-ios-infinite-outline"></i>   
-                        </span>
-                     </div>
-                     <div class="caption">
-                        <h3>Thiết kế website theo yêu cầu</h3>
-                        <p class="p_tkwebct">Đến với Safzagroup.com, chúng tôi không chỉ thiết kế website theo yêu cầu của bạn mà còn mang đến cho bạn những giải pháp kinh doanh hiệu quả thông qua website của mình.</p>
-                     </div>
-                  </div>
-               </div>
+                </div>
+               @endforeach
             </div>
     </div>
 </section>

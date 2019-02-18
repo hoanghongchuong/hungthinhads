@@ -55,7 +55,7 @@
 									</div>
 									
 									<div class="clearfix"></div>
-									
+									@if($_GET['type']!='thiet-ke')
 									<div class="form-group">
 								      	<label for="ten">Danh mục cha</label>
 								      	<select name="txtNewsCate" class="form-control">
@@ -64,7 +64,7 @@
 								      		<?php cate_parent($parent,0,"--",0) ?>
 								      	</select>
 									</div>
-									
+									@endif
 							    	<div class="form-group @if ($errors->first('txtName')!='') has-error @endif">
 								      	<label for="ten">Tên</label>
 								      	<input type="text" id="txtName" name="txtName" value=""  class="form-control" />
@@ -79,12 +79,12 @@
 								      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtAlias'); !!}</label>
 								      	@endif
 									</div>
-									
+									@if($_GET['type']!='thiet-ke')
 									<div class="form-group">
 								      	<label for="desc">Mô tả</label>
 								      	<textarea name="txtDesc"  rows="5" class="form-control"></textarea>
 									</div>
-									
+									@endif
 									
 								</div>
 								<!-- <div class="col-md-6 col-xs-12">

@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/animate.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/cus.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/reponsive.css')}}">
 
     <!-- <link rel="stylesheet" href="css/base.css"> hàm cần dùng điều kiện if( "http://".$_SERVER[“SERVER_NAME”].$_SERVER[“REQUEST_URI”] != http://”.$_SERVER[“SERVER_NAME”]."/index") {
@@ -56,11 +57,12 @@
         <link rel="stylesheet" href="css/main1.css"> 2 file tách này dành cho site thiet-ke-theo-yc.html
         }
          -->
-  
-    <!-- <link rel="stylesheet" href="{{ asset('public/css/base.css')}}"> -->
-    <!-- <link rel="stylesheet" href="{{ asset('public/css/main1.css')}}"> -->
+    @if(@$com == 'design-website')
+    <link rel="stylesheet" href="{{ asset('public/css/base.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/main1.css')}}">
+    @endif
     <!-- trang thiet ket -->
-    @if(@$com !='news-detail')
+    @if(@$com !='news-detail' && @$com !='quang-cao')
     <link rel="stylesheet" href="{{ asset('public/css/bndth.css')}}">
     <link rel="stylesheet" href="{{ asset('public/css/safza.css')}}">
     @endif

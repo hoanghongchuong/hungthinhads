@@ -1,0 +1,3 @@
+.owl-carousel-fix .owl-prev, .owl-carousel-fix .owl-next{
+	display: none !important;
+}

@@ -48,10 +48,11 @@
               <tr>
                 <th style=""><input type="checkbox" name="chonhet" class="minimal" id="chonhet" /></th>
                 <th class="">Stt</th>
-                
-                <th>Danh mục cha</th>             
-                
+                @if($_GET['type']!='thiet-ke')
+                <th>Danh mục cha</th>
+                @endif
                 <th>Hình ảnh</th>
+                
                 <th>Tên bài viết</th>
                 <th class="text-center with_dieuhuong">Hoạt động</th>
                 <th class="text-center with_dieuhuong">Sửa</th>
@@ -63,7 +64,7 @@
               <tr>
                 <td><input type="checkbox" name="chon" id="chon" value="{{$item->id}}" class="chon" /></td>
                 <td class="">{{$k+1}}</td>
-                
+                @if($_GET['type']!='thiet-ke')
                 <td>
                   <?php  $parent = DB::table('news_categories')->where('id', $item->cate_id)->where('com', @$_GET['type'])->first();
                   ?>
@@ -73,9 +74,15 @@
                     {{ 'None' }}
                   @endif
                 </td>
+                @endif
                 <td><img src="{{ asset('upload/news/'.$item->photo) }}" onerror="this.src='{{ asset('public/admin_assets/images/no-image.jpg') }}';" class="img_product"  alt="NO PHOTO" /></td>
+                
                 <td>{{$item->name}} <br>
+                  @if($_GET['type']=='bai-viet')
                   <a href="{{url('chi-tiet/'.$item->alias.'.html')}}" title="">{{url('chi-tiet/'.$item->alias.'.html')}}</a>
+                  @elseif($_GET['type']=='thiet-ke')
+                  <a href="{{url('chi-tiet-bai-viet/'.$item->alias.'.html')}}" title="">{{url('chi-tiet-bai-viet/'.$item->alias.'.html')}}</a>
+                  @endif
                 </td>
                                
                 <td class="text-center with_dieuhuong">

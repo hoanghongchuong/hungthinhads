@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Products;
 use App\ProductCate;
+use App\NewsCate;
 use App\NewsLetter;
 use App\Recruitment;
 use DB,Cache,Mail, Session;
@@ -95,10 +96,30 @@ class IndexController extends Controller {
 	public function designWebsite()
 	{
 		$data = DB::table('slogan')->where('com', 'design-website')->get();
-		$sliders = DB::table('slider')->where('com','gioi-thieu')->where('status',1)->get();
-		// dd($sliders);
+		$package_desgin = DB::table('slogan')->where('com', 'package-design')->get();
+		$sliders = DB::table('slider')->where('com','gioi-thieu')->where('status',1)->get();		
 		$com = 'design-website';
-		return view('templates.design_website', compact('data','com','sliders'));
+		return view('templates.design_website', compact('data','com','sliders','package_desgin'));
+	}
+
+	public function detail_design($alias)
+	{
+		$data = DB::table('news')->where('com','thiet-ke')
+			->where('status',1)
+			->where('alias', $alias)->first();
+		$com = 'design-website';
+		$setting = DB::table('setting')->first();
+		$feedback = DB::table('feedback')->get();
+		$title = $data->title ? $data->title : $data->name;
+		$description = $data->description;
+		$keyword = $data->description;
+		return view('templates.detail_design', compact('data', 'title','description', 'keyword','com', 'setting','feedback'));
+	}
+	public function quangcao()
+	{
+		$news_cate = NewsCate::where('com','bai-viet')->where('parent_id','<>', 0)->where('status',1)->get();
+		$com = 'quang-cao';
+		return view('templates.quangcao', compact('title', 'description', 'com','news_cate'));
 	}
 
 	public function getAbout()
