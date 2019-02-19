@@ -59,7 +59,11 @@ Route::get('thiet-ket-website', 'IndexController@designWebsite')->name("desgin.w
 Route::get('chi-tiet-bai-viet/{alias}.html', 'IndexController@detail_design');
 Route::get('quang-cao','IndexController@quangcao');
 Route::get('ten-mien','IndexController@tenmien');
-
+Route::get('bang-gia-ten-mien','IndexController@banggia');
+Route::get('hosting','IndexController@hosting');
+Route::get('email','IndexController@email');
+Route::get('vps', 'IndexController@vps');
+Route::get('bo-nhan-dien-thuong-hieu', 'IndexController@brandIdentity');
 
 Route::get('tin-tuc',['as'=>'getListNews', 'uses'=>'IndexController@getNews']);
 Route::get('chi-tiet/{alias}.html',['as'=>'getNewsDetail', 'uses'=>'IndexController@getNewsDetail']);

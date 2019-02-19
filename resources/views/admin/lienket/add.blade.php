@@ -24,7 +24,7 @@
         	<form name="frmAdd" method="post" action="{!! route('admin.lienket.postAdd') !!}" enctype="multipart/form-data">
         		<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
           		<div class="col-md-6 col-xs-12">
-          			@if($_GET['type']!='catalog')
+          			
 					<div class="form-group col-md-12 @if ($errors->first('fImages')!='') has-error @endif">
 						<label for="file">File ảnh</label>
 				     	<input type="file" id="file" name="fImages" >
@@ -33,7 +33,7 @@
 				      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('fImages'); !!}</label>
 				      	@endif
 					</div>
-					@endif
+					
 
 					@if($_GET['type']=='catalog')
 					<div class="form-group">
@@ -54,7 +54,7 @@
 					</div>
 					@endif -->
 					<div class="clearfix"></div>
-					@if($_GET['type']!='quang-cao')
+					
 			    	<div class="form-group @if ($errors->first('txtName')!='') has-error @endif">
 				      	<label for="ten">Tên</label>
 				      	<input type="text" id="txtName" name="txtName" value=""  class="form-control" />
@@ -62,7 +62,7 @@
 				      	<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {!! $errors->first('txtName'); !!}</label>
 				      	@endif
 					</div>
-					@endif
+					
 					<!-- <div class="form-group">
 				      	<label for="alias">Link liên kết</label>
 				      	<input type="text" name="txtLink" id="txtLink" value=""  class="form-control" />
@@ -77,7 +77,7 @@
 					
 					<input type="hidden" name="txtCom" value="{{ @$_GET['type'] }}"/>
 				</div>
-				@if($_GET['type']!='quang-cao')
+				
 				<div class="col-md-12 col-xs-12">
 					
 					<div class="box box-info">
@@ -94,7 +94,7 @@
 		        	</div>
 					
 				</div>
-				@endif
+				
 	            <div class="clearfix"></div>
 	            @if($_GET['type']!='catalog')
 			    <div class="col-md-6">

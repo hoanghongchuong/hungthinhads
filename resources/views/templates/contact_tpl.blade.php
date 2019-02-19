@@ -4,7 +4,7 @@
     $setting = Cache::get('setting');
     $banner = DB::table('banner_content')->where('position', 5)->first();
 ?>
-<div class="content-box content-box-page">
+<div class="content-box content-box-page" style="margin-top: 30px;">
     <nav aria-label="breadcrumb" class="nav-breadcrumb">
         <div class="container">
             <div class="row">

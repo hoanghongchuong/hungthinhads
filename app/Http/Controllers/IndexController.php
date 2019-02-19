@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Products;
+use App\News;
 use App\ProductCate;
 use App\NewsCate;
 use App\NewsLetter;
@@ -123,11 +123,48 @@ class IndexController extends Controller {
 	}
 	public function tenmien()
 	{
-		
+		$cate = NewsCate::where('alias','ten-mien')->where('status',1)->first();
+		$data = News::where('cate_id', $cate->id)->where('status',1)->orderBy('id','desc')->get();
 		$com = 'Tên miền';
 		$title = 'Tên miền';
-		return view('templates.tenmien', compact('title'));
+		return view('templates.tenmien', compact('title','data'));
 	}
+	public function banggia()
+	{
+		$title = 'Bảng giá tên miền';
+		$com = 'bang-gia';
+		$package = DB::table('slogan')->where('com','package-design')->get();
+		return view('templates.banggia', compact('title','com','package'));
+	}
+
+	public function hosting()
+	{
+		$title = 'Hosting';
+		$com = 'hosting';
+		return view('templates.hosting', compact('com','title'));
+	}
+
+	public function email()
+	{
+		$title = "Email";
+		$com = 'Email';
+		return view('templates.email', compact('title','com'));
+	}
+	public function vps()
+	{
+		$title = "VPS";
+		$com = "vps";
+		return view('templates.vps', compact('title', 'com'));
+	}
+
+	public function brandIdentity()
+	{
+		$title = "Bộ nhận diện thương hiệu";
+		$com = 'brand-identity';
+		$projects = DB::table('news')->where('com', 'project')->where('status',1)->orderBy('id','desc')->get();
+		return view('templates.brand', compact('title', 'com','projects'));
+	}
+
 	public function getAbout()
 	{
 		$about = DB::table('about')->where('com','gioi-thieu')->first();		

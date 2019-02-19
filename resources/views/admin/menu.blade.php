@@ -52,10 +52,18 @@
                 <i class="fa fa-dashboard"></i> <span>Quảng cáo</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="backend/slogan?type=service-qc"><i class="fa fa-circle-o"></i> <span>Dịch vụ quảng cáo</span></a></li>
-                               
+                <li><a href="backend/slogan?type=service-qc"><i class="fa fa-circle-o"></i> <span>Dịch vụ quảng cáo</span></a></li>                               
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Bộ nhận diện thương hiệu</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="backend/news?type=project"><i class="fa fa-circle-o"></i> <span>Dự án đã triển khai</span></a></li>                               
               </ul>
             </li>         
+            <!-- <li><a href="backend/lienket?type=quang-cao"><i class="fa fa-gear" aria-hidden="true"></i> <span>Quản lý quảng cáo</span></a></li>   -->
             <li><a href="backend/partner"><i class="fa fa-circle-o"></i> <span>Quản lý đối tác</span></a></li>
             <li><a href="backend/feedback"><i class="fa fa-gear" aria-hidden="true"></i> <span>Ý kiến khách hàng</span></a></li>
             <li><a href="backend/contact"><i class="fa fa-envelope"></i> <span>Quản lý liên hệ</span></a></li>
@@ -71,7 +79,7 @@
               <ul class="treeview-menu">            
                 
                 <li><a href="backend/banner"><i class="fa fa-gear" aria-hidden="true"></i> <span>Quản lý banner</span></a></li>
-                <li><a href="backend/lienket?type=quang-cao"><i class="fa fa-gear" aria-hidden="true"></i> <span>Quản lý quảng cáo</span></a></li>
+                
                 <li><a href="backend/position"><i class="fa fa-gear" aria-hidden="true"></i> <span>Vị trí quảng cáo</span></a></li>
               </ul>
             </li> -->

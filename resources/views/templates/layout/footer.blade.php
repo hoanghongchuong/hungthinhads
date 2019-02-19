@@ -76,14 +76,14 @@
                             <li><a target="_blank" href="#">Thiết kế website</a></li>
                             <li><a target="_blank" href="#">Quảng cáo Facebook</a></li>
                             <li><a target="_blank" href="#">Quảng cáo Google</a></li>
-                            <li><a target="_blank" href="http://safzagroup.com/chi-tiet/logo.html">Thiết kế Logo</a></li>
-                            <li><a target="_blank" href="http://safzagroup.com/bo-nhan-dien-thuong-hieu.html">Nhận diện thương hiệu</a></li>
+                            <li><a target="_blank" href="#">Thiết kế Logo</a></li>
+                            <li><a target="_blank" href="#">Nhận diện thương hiệu</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-6">
                         <p align="left" class="title">HỖ TRỢ</p>
                         <ul>
-                            <li><a target="_blank" href="http://safzagroup.com/lienhe.html">Liên hệ với HUNGTHINH</a></li>
+                            <li><a target="_blank" href="{{url('lien-he')}}">Liên hệ với HUNGTHINH</a></li>
                             <li><a target="_blank" href="">Hướng dẫn sử dụng</a></li>
                             <li><a target="_blank" href="">Hình thức thanh toán</a></li>
                             <li><a target="_blank" href="">Thiết kế HUNGTHINH Themes</a></li>

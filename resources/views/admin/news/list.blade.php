@@ -28,7 +28,7 @@
     <small>@yield('action')</small>
   </h1>
   <ol class="breadcrumb">
-    <li><a href="admin"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="backend"><i class="fa fa-dashboard"></i> Home</a></li>
     <li><a href="javascript:">@yield('controller')</a></li>
     <li class="active">@yield('action')</li>
   </ol>
@@ -48,7 +48,7 @@
               <tr>
                 <th style=""><input type="checkbox" name="chonhet" class="minimal" id="chonhet" /></th>
                 <th class="">Stt</th>
-                @if($_GET['type']!='thiet-ke')
+                @if($_GET['type']!='thiet-ke' && $_GET['type']!='project')
                 <th>Danh mục cha</th>
                 @endif
                 <th>Hình ảnh</th>
@@ -64,7 +64,7 @@
               <tr>
                 <td><input type="checkbox" name="chon" id="chon" value="{{$item->id}}" class="chon" /></td>
                 <td class="">{{$k+1}}</td>
-                @if($_GET['type']!='thiet-ke')
+                @if($_GET['type']!='thiet-ke' && $_GET['type']!='project')
                 <td>
                   <?php  $parent = DB::table('news_categories')->where('id', $item->cate_id)->where('com', @$_GET['type'])->first();
                   ?>
